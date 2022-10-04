@@ -9,12 +9,15 @@ export interface IUser {
 }
 
 export interface IFormUser extends IUser {
-  role: string;
+  role: string[];
   canAccess: boolean;
 }
 
 export type IMappedForm<T> = {
-  [P in keyof T]: [T[P] | null, (Validators | ValidatorFn)[]?];
+  [P in keyof T]: [
+    T[P] extends Array<T> ? T[P][] : T[P],
+    (Validators | ValidatorFn)[]?
+  ];
 };
 
 export type IPickMappedForm = Pick<

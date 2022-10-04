@@ -1,25 +1,75 @@
-<form [formGroup]="myForm">
+<form [formGroup]="myForm" class="card p-5">
   <div>
     <label>Name</label>
-    <input type="text" formControlName="name" name="name" />
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+      name="name"
+    />
   </div>
   <div>
     <label>Age</label>
 
-    <input type="number" formControlName="age" name="age" />
+    <input
+      type="number"
+      class="form-control"
+      formControlName="age"
+      name="age"
+    />
   </div>
   <div>
     <label>Role</label>
 
-    <input type="text" formControlName="role" name="role" />
+    <ng-select
+      appearance="outline"
+      formControlName="role"
+      [items]="availableRoles"
+      [multiple]="true"
+    ></ng-select>
   </div>
   <div>
-    <label>Gender</label>
-
-    <input type="text" formControlName="gender" name="gender" />
+    <!-- <label>Gender</label> -->
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="gender"
+        formControlName="gender"
+        id="flexRadioDefault1"
+      />
+      <label class="form-check-label" for="flexRadioDefault1"> Male </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        formControlName="gender"
+        name="gender"
+        id="flexRadioDefault2"
+        checked
+      />
+      <label class="form-check-label" for="flexRadioDefault2"> Female </label>
+    </div>
+    <!-- <input
+      type="text"
+      formControlName="gender"
+      class="form-control"
+      name="gender"
+    /> -->
   </div>
   <div>
-    <label>CanAccess</label>
-    <input type="text" formControlName="canAccess" name="canAccess" />
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="flexSwitchCheckChecked"
+        checked
+        formControlName="canAccess"
+      />
+      <label class="form-check-label" for="flexSwitchCheckChecked"
+        >Can Access</label
+      >
+    </div>
   </div>
 </form>

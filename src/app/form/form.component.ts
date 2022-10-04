@@ -17,6 +17,7 @@ import { IPickMappedForm, IPickMappedFormValues } from './form.model';
 })
 export class FormComponent implements OnInit {
   myForm: FormGroup;
+  availableRoles: string[] = ['admin', 'manager', 'naive', 'member'];
   constructor(public fb: FormBuilder) {}
 
   ngOnInit() {
@@ -31,7 +32,7 @@ export class FormComponent implements OnInit {
       name: 'Srini',
       age: 20,
       gender: 'M',
-      role: 'Admin',
+      role: ['Admin'],
       canAccess: true,
     };
     this.myForm.patchValue({ ...data });
@@ -42,7 +43,7 @@ export class FormComponent implements OnInit {
       name: ['', [Validators.required]],
       age: [null, [Validators.min(18), Validators.max(60)]],
       gender: [null, [Gender()]],
-      role: ['', []],
+      role: [[], []],
       canAccess: [false, []],
     });
   }
