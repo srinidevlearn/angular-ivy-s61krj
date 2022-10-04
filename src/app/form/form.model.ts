@@ -1,4 +1,11 @@
-import { FormControl, ValidatorFn, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 export interface IUser {
   name: string;
@@ -8,9 +15,15 @@ export interface IUser {
   email: string;
 }
 
+export interface IAddress {
+  city: string;
+  pincode: string;
+}
+
 export interface IFormUser extends IUser {
   role: string[];
   canAccess: boolean;
+  address: IAddress[];
 }
 
 export type IMappedForm<T> = {
@@ -20,12 +33,15 @@ export type IMappedForm<T> = {
   ];
 };
 
-export type IPickMappedForm = Pick<
-  IMappedForm<IFormUser>,
-  'name' | 'age' | 'gender' | 'role' | 'canAccess'
->;
+export type IPickMappedFormArray<T> = {
+  [P in keyof T]: AbstractControl<T>[];
+};
 
-export type IPickMappedFormValues = Pick<
-  IFormUser,
-  'name' | 'age' | 'gender' | 'role' | 'canAccess'
->;
+export type IReqFields =
+  | 'name'
+  | 'age'
+  | 'gender'
+  | 'role'
+  | 'canAccess'
+export type IPickMappedForm = Pick<IMappedForm<IFormUser>, IReqFields>;
+export type IPickMappedFormValues = Pick<IFormUser, IReqFields>;

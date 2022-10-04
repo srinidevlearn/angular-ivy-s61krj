@@ -8,7 +8,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { Gender } from './custom.validator';
-import { IPickMappedForm, IPickMappedFormValues } from './form.model';
+import {
+  IAddress,
+  IMappedForm,
+  IPickMappedForm,
+  IPickMappedFormArray,
+  IPickMappedFormValues,
+} from './form.model';
 
 @Component({
   selector: 'app-form',
@@ -34,6 +40,7 @@ export class FormComponent implements OnInit {
       gender: 'M',
       role: ['Admin'],
       canAccess: true,
+      // address: [{ city: 'chennai', pincode: '600091' }],
     };
     this.myForm.patchValue({ ...data });
   }
@@ -45,6 +52,7 @@ export class FormComponent implements OnInit {
       gender: [null, [Gender()]],
       role: [[], []],
       canAccess: [false, []],
+      // address: this.fb.array<IPickMappedFormArray<IAddress[]>>([]),
     });
   }
 }
