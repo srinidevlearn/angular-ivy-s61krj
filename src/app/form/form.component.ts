@@ -38,7 +38,7 @@ export class FormComponent implements OnInit {
       name: 'Srini',
       age: 20,
       gender: 'M',
-      role: ['Admin'],
+      role: ['admin', 'member'],
       canAccess: true,
       // address: [{ city: 'chennai', pincode: '600091' }],
     };

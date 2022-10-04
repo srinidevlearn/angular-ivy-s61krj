@@ -21,7 +21,7 @@ export interface IAddress {
 }
 
 export interface IFormUser extends IUser {
-  role: string[];
+  role: ('admin' | 'manager' | 'naive' | 'member')[];
   canAccess: boolean;
   address: IAddress[];
 }
@@ -37,11 +37,6 @@ export type IPickMappedFormArray<T> = {
   [P in keyof T]: AbstractControl<T>[];
 };
 
-export type IReqFields =
-  | 'name'
-  | 'age'
-  | 'gender'
-  | 'role'
-  | 'canAccess'
+export type IReqFields = 'name' | 'age' | 'gender' | 'role' | 'canAccess';
 export type IPickMappedForm = Pick<IMappedForm<IFormUser>, IReqFields>;
 export type IPickMappedFormValues = Pick<IFormUser, IReqFields>;
