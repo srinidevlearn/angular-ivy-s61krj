@@ -1,20 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Gender } from './custom.validator';
-import {
-  IAddress,
-  IMappedForm,
-  IPickMappedForm,
-  IPickMappedFormArray,
-  IPickMappedFormValues,
-} from './form.model';
+import { IPickMappedForm, IPickMappedFormValues } from './form.model';
 
 @Component({
   selector: 'app-form',
